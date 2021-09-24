@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsApp3", "WinFormsApp3\WinFormsApp3.csproj", "{420DFD99-473B-459A-84D0-EE827F4A2B80}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{69377B9E-7EFA-4AC5-A8DE-E3B20C736720}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "老数据读取器", "老数据读取器\老数据读取器.csproj", "{6B0C0A1D-E7A1-4E10-B817-471AC615C396}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "个人成绩单生成器", "个人成绩单生成器\个人成绩单生成器.csproj", "{B47AF336-C308-4342-9FFA-360AE4827705}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +19,14 @@ Global
 		{420DFD99-473B-459A-84D0-EE827F4A2B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420DFD99-473B-459A-84D0-EE827F4A2B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{420DFD99-473B-459A-84D0-EE827F4A2B80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69377B9E-7EFA-4AC5-A8DE-E3B20C736720}.Debug|Any CPU.ActiveCfg = Debug
-		{69377B9E-7EFA-4AC5-A8DE-E3B20C736720}.Release|Any CPU.ActiveCfg = Release
+		{6B0C0A1D-E7A1-4E10-B817-471AC615C396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0C0A1D-E7A1-4E10-B817-471AC615C396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0C0A1D-E7A1-4E10-B817-471AC615C396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0C0A1D-E7A1-4E10-B817-471AC615C396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B47AF336-C308-4342-9FFA-360AE4827705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B47AF336-C308-4342-9FFA-360AE4827705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B47AF336-C308-4342-9FFA-360AE4827705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B47AF336-C308-4342-9FFA-360AE4827705}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

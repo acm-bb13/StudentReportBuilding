@@ -4,7 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.OleDb;
 using System.Configuration;
-namespace WinFormsApp3
+namespace 老数据读取器
 {
     public class DBHelper
     {
@@ -20,22 +20,29 @@ namespace WinFormsApp3
         {//Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & server.mappath("tushu.mdb")";Persist Security Info=False
             get
             {
-                OleDbConnection myConn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+route);
-                string connectionString = myConn.ConnectionString;
-                if (connection == null)
+                try
                 {
-                    connection = new OleDbConnection(connectionString);
-                    //打开连接
-                    connection.Open();
+                    OleDbConnection myConn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + route);
+                    string connectionString = myConn.ConnectionString;
+                    if (connection == null)
+                    {
+                        connection = new OleDbConnection(connectionString);
+                        //打开连接
+                        connection.Open();
+                    }
+                    else if (connection.State == System.Data.ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    else if (connection.State == System.Data.ConnectionState.Broken)
+                    {
+                        connection.Close();
+                        connection.Open();
+                    }
                 }
-                else if (connection.State == System.Data.ConnectionState.Closed)
+                catch(Exception ee)
                 {
-                    connection.Open();
-                }
-                else if (connection.State == System.Data.ConnectionState.Broken)
-                {
-                    connection.Close();
-                    connection.Open();
+                    throw ee;
                 }
                 return connection;
             }

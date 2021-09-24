@@ -87,7 +87,7 @@ public class ExcelTool
                     object obj = tmpDataTable.Rows[r][tmpDataTable.Columns[i].ToString()];
                     datas[r + 1, i] = obj == null ? "" : "'" + obj.ToString().Trim();//在obj.ToString()前加单引号是为了防止自动转化格式  
                 }
-                System.Windows.Forms.Application.DoEvents();
+                //System.Windows.Forms.Application.DoEvents();
                 //添加进度条  
             }
             //Excel.Range fchR = worksheet.get_Range(worksheet.Cells[1, 1], worksheet.Cells[rowNum + 1, columnNum]);  

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,10 +76,18 @@ namespace WinFormsApp3
             {
                 string strFileName = ofd.FileName;
                 DBHelper.route = strFileName;
+
+                //保存文件名 和 所处文件夹路径
+                DBHelper.FileName = System.IO.Path.GetFileName(strFileName);
+                DBHelper.DirectoryName = System.IO.Path.GetDirectoryName(strFileName);
+
+
                 if (dataGridView1.Columns.Count > 0) { dataGridView1.Columns.Clear(); }
                 if (dataGridView1.Rows.Count > 0) { dataGridView1.Rows.Clear(); }
 
                 label1.Text = System.IO.Path.GetFileName(strFileName);
+                //Directory.CreateDirectory(path);
+
                 OleDbConnection myconn = DBHelper.Connection;
                 DataTable dt = myconn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
                 int n = dt.Rows.Count;
@@ -128,8 +137,46 @@ namespace WinFormsApp3
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ExcelTool d = new ExcelTool();
-            d.OutputAsExcelFile(dataGridView1);
+            //ExcelTool d = new ExcelTool();
+            //d.OutputAsExcelFile(dataGridView1);
+            FolderBrowserDialog dilog = new FolderBrowserDialog();
+
+            dilog.Description = "请选择文件夹";
+            string path = "";
+            if (dilog.ShowDialog() == DialogResult.OK || dilog.ShowDialog() == DialogResult.Yes)
+            {
+                path = dilog.SelectedPath;
+            }
+            label1.Text = path;
+            string[] fileX = Directory.GetFiles(path);
+            MessageBox.Show(fileX.Length.ToString());
+            for(int i = 0; i < fileX.Length; i++)
+            {
+                MessageBox.Show(fileX[i].Remove(0, fileX[i].Length - 4));
+                if (".mdb".Equals(fileX[i].Remove(0,fileX.Length-4)))
+                label1.Text += "\n"+ fileX[i];
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            label1.Text = "正在转换";
+            //在对应数据库文件下创建同名文件夹
+            string path = DBHelper.route;
+            path = path.Remove(path.Length - 4, 4);
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            //然后将所有表一一转换成Excel表格
+            for(int i = 1; i <= comboBox1.Items.Count - 1; i++)
+            {
+                comboBox1.SelectedIndex = i;
+                showX(comboBox1.Items[i].ToString());
+                ExcelTool d = new ExcelTool();
+                d.OutputAsExcelFile(dataGridView1, path+"\\"+ comboBox1.Items[i].ToString());
+            }
+            label1.Text = DBHelper.FileName;
         }
     }
 }
