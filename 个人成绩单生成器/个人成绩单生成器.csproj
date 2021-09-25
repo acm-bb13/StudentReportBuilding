@@ -116,6 +116,20 @@
     <Compile Include="InitForm.Designer.cs">
       <DependentUpon>InitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MdbReader\DBHelper.cs" />
+    <Compile Include="MdbReader\ExcelTool.cs" />
+    <Compile Include="MdbReader\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdbReader\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MdbReader\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdbReader\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLManage.cs" />
@@ -153,6 +167,12 @@
     <EmbeddedResource Include="InitForm.resx">
       <DependentUpon>InitForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MdbReader\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MdbReader\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -183,12 +203,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\个人成绩模板-南方冶金学院.docx" />
+    <None Include="Resources\个人成绩模板-江西理工大学.docx" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
@@ -215,6 +246,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\a17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\studentmanagesystem.sql" />
+    <None Include="Resources\gear8.png" />
+    <None Include="Resources\a10.png" />
+    <Content Include="Resources\w4.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

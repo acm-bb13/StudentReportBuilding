@@ -36,6 +36,7 @@ namespace 老数据读取器
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@ namespace 老数据读取器
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(289, 11);
+            this.button3.Location = new System.Drawing.Point(293, 26);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(185, 42);
@@ -58,7 +59,7 @@ namespace 老数据读取器
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(2, 102);
+            this.label1.Location = new System.Drawing.Point(6, 117);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 22);
             this.label1.TabIndex = 7;
@@ -69,7 +70,7 @@ namespace 老数据读取器
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Lime;
-            this.label2.Location = new System.Drawing.Point(2, 33);
+            this.label2.Location = new System.Drawing.Point(6, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 22);
             this.label2.TabIndex = 8;
@@ -77,14 +78,14 @@ namespace 老数据读取器
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(6, 58);
+            this.progressBar1.Location = new System.Drawing.Point(10, 73);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(468, 41);
             this.progressBar1.TabIndex = 9;
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(6, 127);
+            this.progressBar2.Location = new System.Drawing.Point(10, 142);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(468, 39);
             this.progressBar2.TabIndex = 10;
@@ -93,7 +94,7 @@ namespace 老数据读取器
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 195);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 210);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
@@ -104,18 +105,29 @@ namespace 老数据读取器
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 171);
+            this.comboBox1.Location = new System.Drawing.Point(10, 186);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(468, 20);
             this.comboBox1.TabIndex = 12;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Yellow;
+            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(461, 12);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "该功能会将您指定的目录以及该目录下的子目录下所有mdb格式的文件转换为Excel文件";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(481, 422);
+            this.ClientSize = new System.Drawing.Size(490, 438);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.progressBar2);
@@ -141,5 +153,6 @@ namespace 老数据读取器
         private System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.ProgressBar progressBar1;
         public System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Label label3;
     }
 }
