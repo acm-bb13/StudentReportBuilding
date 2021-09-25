@@ -98,6 +98,12 @@
     <Compile Include="FileStudentsSelect.Designer.cs">
       <DependentUpon>FileStudentsSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileWordSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileWordSelect.Designer.cs">
+      <DependentUpon>FileWordSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="FlieClassSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,11 +158,21 @@
     <Compile Include="TheadControl.Designer.cs">
       <DependentUpon>TheadControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="TheadMergeControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TheadMergeControl.Designer.cs">
+      <DependentUpon>TheadMergeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WordClass.cs" />
     <EmbeddedResource Include="ClassForm.resx">
       <DependentUpon>ClassForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FileStudentsSelect.resx">
       <DependentUpon>FileStudentsSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileWordSelect.resx">
+      <DependentUpon>FileWordSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FlieClassSelect.resx">
       <DependentUpon>FlieClassSelect.cs</DependentUpon>
@@ -191,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TheadControl.resx">
       <DependentUpon>TheadControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheadMergeControl.resx">
+      <DependentUpon>TheadMergeControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

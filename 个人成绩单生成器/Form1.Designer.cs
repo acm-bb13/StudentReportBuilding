@@ -37,6 +37,8 @@ namespace 个人成绩单生成器
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,10 +70,10 @@ namespace 个人成绩单生成器
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.Lime;
-            this.button2.Location = new System.Drawing.Point(362, 67);
+            this.button2.Location = new System.Drawing.Point(488, 11);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 53);
+            this.button2.Size = new System.Drawing.Size(120, 40);
             this.button2.TabIndex = 4;
             this.button2.Text = "刷新班级列表";
             this.button2.UseVisualStyleBackColor = true;
@@ -85,7 +87,7 @@ namespace 个人成绩单生成器
             this.button1.Location = new System.Drawing.Point(362, 11);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 39);
+            this.button1.Size = new System.Drawing.Size(120, 40);
             this.button1.TabIndex = 5;
             this.button1.Text = "搜索";
             this.button1.UseVisualStyleBackColor = true;
@@ -99,7 +101,7 @@ namespace 个人成绩单生成器
             this.button3.Location = new System.Drawing.Point(362, 382);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 104);
+            this.button3.Size = new System.Drawing.Size(246, 104);
             this.button3.TabIndex = 6;
             this.button3.Text = "读取选中班级信息";
             this.button3.UseVisualStyleBackColor = true;
@@ -110,12 +112,12 @@ namespace 个人成绩单生成器
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.Color.Gold;
-            this.button4.Location = new System.Drawing.Point(362, 145);
+            this.button4.Location = new System.Drawing.Point(362, 89);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(120, 73);
+            this.button4.Size = new System.Drawing.Size(246, 53);
             this.button4.TabIndex = 7;
-            this.button4.Text = "打开搜索学生窗口";
+            this.button4.Text = "学生搜索";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -135,21 +137,49 @@ namespace 个人成绩单生成器
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold);
             this.button5.ForeColor = System.Drawing.Color.BlueViolet;
-            this.button5.Location = new System.Drawing.Point(362, 261);
+            this.button5.Location = new System.Drawing.Point(362, 189);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(120, 73);
             this.button5.TabIndex = 9;
-            this.button5.Text = "多班级成绩单生成";
+            this.button5.Text = "批量成绩单生成器";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold);
+            this.button6.ForeColor = System.Drawing.Color.Gold;
+            this.button6.Location = new System.Drawing.Point(488, 189);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(120, 73);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Word文档批量合并工具";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold);
+            this.button7.ForeColor = System.Drawing.Color.BlueViolet;
+            this.button7.Location = new System.Drawing.Point(488, 266);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(120, 73);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "异常学生信息分析工具";
+            this.button7.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(500, 505);
+            this.ClientSize = new System.Drawing.Size(642, 505);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
@@ -177,6 +207,8 @@ namespace 个人成绩单生成器
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }
 
