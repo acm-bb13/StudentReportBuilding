@@ -32,5 +32,25 @@ namespace 个人成绩单生成器
             form1.ShowDialog();
             this.Close();
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            button2_Click(sender, e);
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            button2_Click(sender, e);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
     }
 }

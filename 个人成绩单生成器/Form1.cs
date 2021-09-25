@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -133,6 +134,62 @@ namespace 个人成绩单生成器
             }
             FileClassSelect fileClassSelect = new FileClassSelect(classNames , classIds);
             fileClassSelect.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("选定目标文件夹后，该程序会读取目标文件夹内所有子文件夹中的.word文件，请尽量不要选取过多的文件避免造成卡顿\n\n并且该功能需要最新版本的Office支持，若无法使用，请将电脑中的Word文档更新至最新版本！！！"
+                , "！！！警告！！！", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string path = SelectPath();
+            if (path == "") return;
+            List<string> fileList = fileFun(path);
+            FileWordSelect fileWordSelect = new FileWordSelect(fileList);
+            fileWordSelect.ShowDialog();
+
+        }
+
+
+
+        /*
+         * 利用递归将所选文件路径中的全部子文件里的所有'.docx'文件
+         * 全部放置到List中。
+         */
+        List<string> fileFun(string path)
+        {
+            List<string> fileList = new List<string>();
+            string[] fileX = Directory.GetDirectories(path);
+            foreach (string s in fileX)
+            {
+                fileList.AddRange(fileFun(path + "\\" + System.IO.Path.GetFileName(s)));
+            }
+            fileX = Directory.GetFiles(path);
+            for (int i = 0; i < fileX.Length; i++)
+            {
+                string ss = fileX[i].Remove(0, fileX[i].Length - 4).ToLower();
+                if (".doc".Equals(ss) || ".DOC".Equals(ss))
+                {
+                    fileList.Add(fileX[i]);
+
+                }
+                ss = fileX[i].Remove(0, fileX[i].Length - 5).ToLower();
+                if (".docx".Equals(ss) || ".DOCX".Equals(ss))
+                {
+                    fileList.Add(fileX[i]);
+                }
+            }
+            return fileList;
+        }
+
+        //选择文件路径
+        private string SelectPath()
+        {
+            string path = string.Empty;
+            System.Windows.Forms.FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                path = fbd.SelectedPath;
+            }
+            return path;
         }
     }
 }
