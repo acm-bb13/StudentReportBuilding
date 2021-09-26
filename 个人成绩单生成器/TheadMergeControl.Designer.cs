@@ -29,6 +29,7 @@ namespace 个人成绩单生成器
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TheadMergeControl));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -96,6 +97,7 @@ namespace 个人成绩单生成器
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.progressBar1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TheadMergeControl";
             this.Text = "Word文档批量合并";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

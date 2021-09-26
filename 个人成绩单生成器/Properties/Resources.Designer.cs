@@ -83,6 +83,16 @@ namespace 个人成绩单生成器.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap a45d4122b693ff555c1ddfc4c49b6e5b {
+            get {
+                object obj = ResourceManager.GetObject("a45d4122b693ff555c1ddfc4c49b6e5b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap gear8 {
             get {
                 object obj = ResourceManager.GetObject("gear8", resourceCulture);

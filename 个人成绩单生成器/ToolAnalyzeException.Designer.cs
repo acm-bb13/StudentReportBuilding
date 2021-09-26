@@ -29,6 +29,7 @@ namespace 个人成绩单生成器
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolAnalyzeException));
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -86,6 +87,7 @@ namespace 个人成绩单生成器
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ToolAnalyzeException";
             this.Text = "异常信息分析工具";
             this.ResumeLayout(false);

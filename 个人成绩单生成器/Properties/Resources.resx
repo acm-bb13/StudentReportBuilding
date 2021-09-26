@@ -121,10 +121,13 @@
   <data name="a17" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gear8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="a10" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\a10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gear8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gear8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="a45d4122b693ff555c1ddfc4c49b6e5b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a45d4122b693ff555c1ddfc4c49b6e5b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

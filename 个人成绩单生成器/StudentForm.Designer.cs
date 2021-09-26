@@ -29,6 +29,7 @@ namespace 个人成绩单生成器
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -124,7 +125,7 @@ namespace 个人成绩单生成器
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 53);
             this.button2.TabIndex = 13;
-            this.button2.Text = "刷新";
+            this.button2.Text = "重置信息";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // label6
@@ -198,7 +199,7 @@ namespace 个人成绩单生成器
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(120, 62);
             this.button4.TabIndex = 19;
-            this.button4.Text = "选择其他学生补充信息";
+            this.button4.Text = "选择其他学生合并成绩信息";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -221,6 +222,7 @@ namespace 个人成绩单生成器
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StudentForm";
             this.Text = "学生个人信息";
             this.Load += new System.EventHandler(this.StudentForm_Load);
