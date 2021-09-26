@@ -15,6 +15,7 @@ namespace 个人成绩单生成器
     {
         string id;
         string className;
+        string sign;
         string oid;
         string name;
 
@@ -24,7 +25,7 @@ namespace 个人成绩单生成器
 
 
 
-        public StudentForm(string id , string className , string oid , string name , DateTime dataTime)
+        public StudentForm(string id , string className , string sign , string oid , string name , DateTime dataTime)
         {
             InitializeComponent();
             this.id = id;
@@ -33,8 +34,12 @@ namespace 个人成绩单生成器
                 int temp = int.Parse(oid);
                 this.oid = String.Format("{0:D8}", temp);
             }
+            this.sign = sign;
             this.name = name;
             this.dataTime = dataTime;
+
+            if (sign == "1")
+                this.className = className.Remove(className.Length - 3, 3);
         }
 
         public StudentForm(Student student)
@@ -46,8 +51,12 @@ namespace 个人成绩单生成器
                 int temp = int.Parse(student.oid);
                 this.oid = String.Format("{0:D8}", temp);
             }
+            this.sign = student.sign;
             this.name = student.name;
             this.dataTime = student.dataTime;
+
+            if (sign == "1")
+                this.className = className.Remove(className.Length - 3, 3);
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
@@ -108,8 +117,8 @@ namespace 个人成绩单生成器
             label8.Text = className;
             //label10.Text = dataTime.ToString("yyyy-MM-dd");
             if (dataGridView1.Rows.Count > 0) { dataGridView1.Rows.Clear(); }
-            string sql = "SELECT courseinfo.name , testinfo.grade , testinfo.time FROM testinfo JOIN courseinfo ON testinfo.courseId = courseinfo.id WHERE testinfo.stuId = '"
-                + id + "' ORDER BY time ASC";
+            string sql = "SELECT courseinfo.name , testinfo.grade , testinfo.xqTime FROM testinfo JOIN courseinfo ON testinfo.courseId = courseinfo.id WHERE testinfo.stuId = '"
+                + id + "' ORDER BY xqTime ASC";
             MySqlDataReader mySql = SQLManage.GetReader(sql);
 
             //初始化表格
@@ -136,16 +145,16 @@ namespace 个人成绩单生成器
                 int p = 0;
                 while (mySql.FieldCount > p)
                 {
-                    if (p == 2)
-                    {
-                        DateTime t2 = Convert.ToDateTime(mySql[p]);
-                        int ans = DateTimeSub(dataTime, t2);
-                        ans = ans / 180 + 1;
+                    //if (p == 2)
+                    //{
+                    //    DateTime t2 = Convert.ToDateTime(mySql[p]);
+                    //    int ans = DateTimeSub(dataTime, t2);
+                    //    ans = ans / 180 + 1;
 
-                        dataGridView1.Rows[index].Cells[p].Value = ans;
-                        ++p;
-                        continue;
-                    }
+                    //    dataGridView1.Rows[index].Cells[p].Value = ans;
+                    //    ++p;
+                    //    continue;
+                    //}
                     dataGridView1.Rows[index].Cells[p].Value = mySql[p++];
                 }
             }
@@ -230,7 +239,7 @@ namespace 个人成绩单生成器
                     int a = arr[t];
 
                     oDoc.Bookmarks.get_Item("bk" + (t * 2 - 1) + "_" + a).Range.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                    oDoc.Bookmarks.get_Item("bk" + (t * 2) + "_" + a).Range.Text = dataGridView1.Rows[i].Cells[1].Value.ToString() + "分";
+                    oDoc.Bookmarks.get_Item("bk" + (t * 2) + "_" + a).Range.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
                     ++arr[t];
                 }
                 oDoc.Bookmarks.get_Item("班级").Range.Text = className;
@@ -259,6 +268,71 @@ namespace 个人成绩单生成器
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            StudentFormSearch studentFormSearch = new StudentFormSearch(name);
+            studentFormSearch.ShowDialog();
+            StudentForm studentForm = studentFormSearch.studentForm;
+            if (studentForm == null) return;
+            studentForm.flush4();
+            DataGridView dataGridView = studentForm.dataGridView1;
+            List<string> classnamelist = new List<string>();
+            List<string> goldlist = new List<string>();
+            List<string> xqlist = new List<string>();
+            List<int> sg = new List<int>();
+            for(int i = 0; i < dataGridView.Rows.Count; ++i)
+            {
+                classnamelist.Add(dataGridView.Rows[i].Cells[0].Value.ToString());
+                goldlist.Add(dataGridView.Rows[i].Cells[1].Value.ToString());
+                xqlist.Add(dataGridView.Rows[i].Cells[2].Value.ToString());
+                sg.Add(1);
+            }
+            for(int i = 0; i < dataGridView1.Rows.Count; ++i)
+            {
+                for(int index = 0; index < classnamelist.Count; ++index)
+                {
+                    if (classnamelist[index] == dataGridView1.Rows[i].Cells[0].Value.ToString()
+                        && dataGridView1.Rows[i].Cells[2].Value.ToString() == xqlist[index])
+                    {
+                        sg[index] = 0;
+                    }
+                    if (classnamelist[index] == dataGridView1.Rows[i].Cells[0].Value.ToString() 
+                        && dataGridView1.Rows[i].Cells[1].Value.ToString() == "" && goldlist[index] != ""
+                        && dataGridView1.Rows[i].Cells[2].Value.ToString() == xqlist[index]
+                        )
+                    {
+                        dataGridView1.Rows[i].Cells[1].Value = goldlist[index];
+                    }
+                    if (classnamelist[index] == dataGridView1.Rows[i].Cells[0].Value.ToString()
+                        && dataGridView1.Rows[i].Cells[1].Value.ToString() != ""
+                        && goldlist[index] != ""
+                        && dataGridView1.Rows[i].Cells[1].Value.ToString() != goldlist[index]
+                        && dataGridView1.Rows[i].Cells[2].Value.ToString() == xqlist[index])
+                    {
+                        MessageBox.Show("出现数据冲突，合并终止！！！！\n\n" + "冲突科目为" + classnamelist[index] + "\n" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "与" + goldlist[index] + "不匹配");
+                        flush4();
+                        return;
+                    }
+                }
+                
+            }
+            List<string> classnamelist2 = new List<string>();
+            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            {
+                classnamelist2.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+            }
+            for (int i = 0; i < dataGridView.Rows.Count; ++i)
+            {
+                if(sg[i] == 1)
+                {
+                    int t = dataGridView1.Rows.Add();
+                    dataGridView1.Rows[t].Cells[0].Value = dataGridView.Rows[i].Cells[0].Value;
+                    dataGridView1.Rows[t].Cells[1].Value = dataGridView.Rows[i].Cells[1].Value;
+                    dataGridView1.Rows[t].Cells[2].Value = dataGridView.Rows[i].Cells[2].Value;
+                }
+            }
         }
     }
 }

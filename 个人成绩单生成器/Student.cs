@@ -10,6 +10,7 @@ namespace 个人成绩单生成器
     {
         public string id;
         public string className;
+        public string sign;
         public string oid;
         public string name;
 
@@ -20,7 +21,7 @@ namespace 个人成绩单生成器
 
         }
 
-        public Student(string id, string className, string oid, string name, DateTime dataTime)
+        public Student(string id, string className , string sign , string oid, string name, DateTime dataTime)
         {
             this.id = id;
             this.className = className;
@@ -29,6 +30,7 @@ namespace 个人成绩单生成器
                 this.oid = String.Format("{0:D8}", temp);
             }
             this.name = name;
+            this.sign = sign;
             this.dataTime = dataTime;
         }
     }

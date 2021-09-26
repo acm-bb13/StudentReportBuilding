@@ -92,6 +92,7 @@
     <Compile Include="ClassForm.Designer.cs">
       <DependentUpon>ClassForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExcelTool.cs" />
     <Compile Include="FileStudentsSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,20 +123,6 @@
     <Compile Include="InitForm.Designer.cs">
       <DependentUpon>InitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MdbReader\DBHelper.cs" />
-    <Compile Include="MdbReader\ExcelTool.cs" />
-    <Compile Include="MdbReader\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MdbReader\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MdbReader\Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MdbReader\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLManage.cs" />
@@ -145,6 +132,12 @@
     </Compile>
     <Compile Include="StudentForm.Designer.cs">
       <DependentUpon>StudentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentFormSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentFormSearch.Designer.cs">
+      <DependentUpon>StudentFormSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentSearch.cs">
       <SubType>Form</SubType>
@@ -163,6 +156,18 @@
     </Compile>
     <Compile Include="TheadMergeControl.Designer.cs">
       <DependentUpon>TheadMergeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolAnalyzeException.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolAnalyzeException.Designer.cs">
+      <DependentUpon>ToolAnalyzeException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolAnalyzeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolAnalyzeForm.Designer.cs">
+      <DependentUpon>ToolAnalyzeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WordClass.cs" />
     <EmbeddedResource Include="ClassForm.resx">
@@ -183,12 +188,6 @@
     <EmbeddedResource Include="InitForm.resx">
       <DependentUpon>InitForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MdbReader\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MdbReader\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -202,6 +201,9 @@
     <EmbeddedResource Include="StudentForm.resx">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StudentFormSearch.resx">
+      <DependentUpon>StudentFormSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentSearch.resx">
       <DependentUpon>StudentSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +212,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TheadMergeControl.resx">
       <DependentUpon>TheadMergeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolAnalyzeException.resx">
+      <DependentUpon>ToolAnalyzeException.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolAnalyzeForm.resx">
+      <DependentUpon>ToolAnalyzeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -271,6 +279,9 @@
     <None Include="Resources\gear8.png" />
     <None Include="Resources\a10.png" />
     <Content Include="Resources\w4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MdbReader\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

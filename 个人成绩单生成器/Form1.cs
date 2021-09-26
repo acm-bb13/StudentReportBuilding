@@ -33,10 +33,10 @@ namespace 个人成绩单生成器
             if (textBox1.Text != "")
             {
                 string s = textBox1.Text;
-                if (Regex.IsMatch(s, @"^[+-]?\d*[.]?\d*$"))
-                {
-                    s = Convert.ToInt32(s).ToString();
-                }
+                //if (Regex.IsMatch(s, @"^[+-]?\d*[.]?\d*$"))
+                //{
+                //    s = Convert.ToInt32(s).ToString();
+                //}
                 sql += "where name like '%" + s + "%' or id like '%" + s + "%' ";
             }
 
@@ -102,7 +102,13 @@ namespace 个人成绩单生成器
             string id = dataGridView1.Rows[index].Cells[0].Value.ToString();
             string name = dataGridView1.Rows[index].Cells[1].Value.ToString();
             string time = dataGridView1.Rows[index].Cells[2].Value.ToString();
-            ClassForm classForm = new ClassForm(id, name, time);
+            string sign = dataGridView1.Rows[index].Cells[4].Value.ToString();
+            //if (sign == "1")
+            //{
+            //    name = name.Remove(name.Length - 3, 3);
+            //}
+                
+            ClassForm classForm = new ClassForm(id, name, time , sign);
             classForm.ShowDialog();
         }
 
@@ -127,12 +133,14 @@ namespace 个人成绩单生成器
         {
             List<string> classNames = new List<string>();
             List<string> classIds = new List<string>();
+            List<string> signs = new List<string>();
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 classIds.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
                 classNames.Add(dataGridView1.Rows[i].Cells[1].Value.ToString());
+                signs.Add(dataGridView1.Rows[i].Cells[4].Value.ToString());
             }
-            FileClassSelect fileClassSelect = new FileClassSelect(classNames , classIds);
+            FileClassSelect fileClassSelect = new FileClassSelect(classNames , classIds , signs);
             fileClassSelect.ShowDialog();
         }
 
@@ -190,6 +198,12 @@ namespace 个人成绩单生成器
                 path = fbd.SelectedPath;
             }
             return path;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ToolAnalyzeException toolAnalyzeException = new ToolAnalyzeException();
+            toolAnalyzeException.ShowDialog();
         }
     }
 }

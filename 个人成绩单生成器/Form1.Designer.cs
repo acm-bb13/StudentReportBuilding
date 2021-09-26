@@ -142,7 +142,7 @@ namespace 个人成绩单生成器
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(120, 73);
             this.button5.TabIndex = 9;
-            this.button5.Text = "批量成绩单生成器";
+            this.button5.Text = "批量成绩单生成工具";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -170,8 +170,9 @@ namespace 个人成绩单生成器
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(246, 73);
             this.button7.TabIndex = 11;
-            this.button7.Text = "异常学生信息分析工具";
+            this.button7.Text = "异常信息分析工具";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1
             // 

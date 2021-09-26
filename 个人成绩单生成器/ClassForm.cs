@@ -14,12 +14,12 @@ namespace 个人成绩单生成器
     public partial class ClassForm : Form
     {
         //存储读取的信息
-        string id, name, time;
+        string id, name, time , sign;
 
-        public ClassForm(string id , string name , string time)
+        public ClassForm(string id , string name , string time , string sign)
         {
             InitializeComponent();
-            this.id = id; this.name = name; this.time = time;
+            this.id = id; this.name = name; this.time = time; this.sign = sign;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace 个人成绩单生成器
             string stname = dataGridView1.Rows[index].Cells[1].Value.ToString();
             string oid = dataGridView1.Rows[index].Cells[7].Value.ToString();
             DateTime dateTime = Convert.ToDateTime(dataGridView1.Rows[index].Cells[4].Value.ToString());
-            StudentForm studentForm = new StudentForm(id , name , oid , stname , dateTime);
+            StudentForm studentForm = new StudentForm(id , name , sign , oid , stname , dateTime);
             studentForm.ShowDialog();
             this.Visible = true;
         }
@@ -52,6 +52,7 @@ namespace 个人成绩单生成器
                 student.dataTime = (DateTime)dataGridView1.Rows[i].Cells[4].Value;
                 student.oid = dataGridView1.Rows[i].Cells[7].Value.ToString();
                 student.className = name;
+                student.sign = sign;
                 students.Add(student);
             }
             FileStudentsSelect fileStudentsSelect = new FileStudentsSelect(students);

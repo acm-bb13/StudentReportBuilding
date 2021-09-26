@@ -14,13 +14,14 @@ namespace 个人成绩单生成器
     public partial class FileClassSelect : Form
     {
 
-        List<string> classNames, classIds;
+        List<string> classNames, classIds , signs;
 
-        public FileClassSelect(List<string> classNames , List<string> classIds)
-        {
+        public FileClassSelect(List<string> classNames , List<string> classIds , List<string> signs)
+        { 
             InitializeComponent();
             this.classNames = classNames;
             this.classIds = classIds;
+            this.signs = signs;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -45,12 +46,14 @@ namespace 个人成绩单生成器
             if (path == "") return;
             List<string> classId = new List<string>();
             List<string> className = new List<string>();
+            List<string> sign = new List<string>();
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 if ((bool)dataGridView1.Rows[i].Cells[0].Value)
                 {
                     classId.Add(classIds[i]);
                     className.Add(classNames[i]);
+                    sign.Add(signs[i]);
                 }
             }
             if (classId.Count < 1)
@@ -65,7 +68,7 @@ namespace 个人成绩单生成器
                 
                 try
                 {
-                    students2 = getStudentList(classId[i], className[i]);
+                    students2 = getStudentList(classId[i], className[i], sign[i]);
                     System.IO.Directory.CreateDirectory(path + "\\" + className[i]);
                     TheadControl theadControl = new TheadControl(i + 1, classId.Count, 2, path + "\\" + className[i], students2);
                     theadControl.Show();
@@ -90,12 +93,14 @@ namespace 个人成绩单生成器
             if (path == "") return;
             List<string> classId = new List<string>();
             List<string> className = new List<string>();
+            List<string> sign = new List<string>();
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 if ((bool)dataGridView1.Rows[i].Cells[0].Value)
                 {
                     classId.Add(classIds[i]);
                     className.Add(classNames[i]);
+                    sign.Add(signs[i]);
                 }
             }
             if (classId.Count < 1)
@@ -110,7 +115,7 @@ namespace 个人成绩单生成器
                 
                 try
                 {
-                    students2 = getStudentList(classId[i], className[i]);
+                    students2 = getStudentList(classId[i], className[i] , sign[i]);
                     System.IO.Directory.CreateDirectory(path + "\\" + className[i]);
                     TheadControl theadControl = new TheadControl(i + 1, classId.Count, 1, path + "\\" + className[i], students2);
                     theadControl.Show();
@@ -131,7 +136,7 @@ namespace 个人成绩单生成器
 
 
         //获取指定班级id的所有学生列表
-        public List<Student> getStudentList(string id , string name)
+        public List<Student> getStudentList(string id , string name , string sign)
         {
             List<Student> students = new List<Student>();
             string sql = "select * from studentinfo where '" + id + "' = iClass";
@@ -144,6 +149,7 @@ namespace 个人成绩单生成器
                 student.dataTime = (DateTime)mySql[4];
                 student.oid = mySql[7].ToString();
                 student.className = name;
+                student.sign = sign;
                 students.Add(student);
             }
             SQLManage.closeConn();
@@ -158,7 +164,8 @@ namespace 个人成绩单生成器
                 int p = 0;
                 dataGridView1.Rows[i].Cells[p++].Value = false;
                 dataGridView1.Rows[i].Cells[p++].Value = classNames[i];
-                dataGridView1.Rows[i].Cells[p++].Value = classIds[i];
+                dataGridView1.Rows[i].Cells[p++].Value = classIds[i]; 
+                dataGridView1.Rows[i].Cells[p++].Value = signs[i];
             }
         }
 

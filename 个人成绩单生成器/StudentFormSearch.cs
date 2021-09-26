@@ -6,23 +6,29 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 个人成绩单生成器
 {
-    public partial class StudentSearch : Form
+    public partial class StudentFormSearch : Form
     {
-        public StudentSearch()
+        public StudentForm studentForm;
+        public StudentFormSearch(string name)
         {
             InitializeComponent();
+            textBox1.Text = name;
+        }
+
+        private void StudentFormSearch_Load(object sender, EventArgs e)
+        {
             flush2();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            textBox1.Text = "";
+            flush2();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,7 +49,7 @@ namespace 个人成绩单生成器
                 //}
                 sql += " where studentinfo.name like '%" + s + "%' or studentinfo.id like '%" + s + "%' or studentinfo.oid like '%" + s + "%' ";
             }
-            sql += " limit 100 ";
+            sql += " limit 1000 ";
 
             MySqlDataReader mySql = SQLManage.GetReader(sql);
 
@@ -83,7 +89,6 @@ namespace 个人成绩单生成器
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
             int index = dataGridView1.CurrentRow.Index;
             string id = dataGridView1.Rows[index].Cells[0].Value.ToString();
             string stname = dataGridView1.Rows[index].Cells[1].Value.ToString();
@@ -91,23 +96,8 @@ namespace 个人成绩单生成器
             DateTime dateTime = Convert.ToDateTime(dataGridView1.Rows[index].Cells[4].Value.ToString());
             string name = dataGridView1.Rows[index].Cells[10].Value.ToString();
             string sign = dataGridView1.Rows[index].Cells[11].Value.ToString();
-            StudentForm studentForm = new StudentForm(id, name , sign , oid , stname, dateTime);
-            studentForm.ShowDialog();
-            this.Visible = true;
-        }
-
-        private void TextBox1_Press(object sender, KeyPressEventArgs e)
-        {
-
-            if (e.KeyChar == 13)
-            {
-                flush2();
-            }
-        }
-
-        private void StudentSearch_Load(object sender, EventArgs e)
-        {
-
+            studentForm = new StudentForm(id, name, sign, oid, stname, dateTime);
+            Close();
         }
     }
 }

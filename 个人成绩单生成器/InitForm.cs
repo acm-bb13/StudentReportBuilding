@@ -27,10 +27,10 @@ namespace 个人成绩单生成器
 
         private void button1_Click(object sender, EventArgs e)
         {
-            老数据读取器.Form1 form1 = new 老数据读取器.Form1();
-            this.Visible = false;
-            form1.ShowDialog();
-            this.Close();
+            //老数据读取器.Form1 form1 = new 老数据读取器.Form1();
+            //this.Visible = false;
+            //form1.ShowDialog();
+            //this.Close();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
