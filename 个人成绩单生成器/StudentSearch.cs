@@ -33,7 +33,7 @@ namespace 个人成绩单生成器
         void flush2()
         {
             if (dataGridView1.Rows.Count > 0) { dataGridView1.Rows.Clear(); }
-            string sql = "select * from studentinfo LEFT  JOIN ( select id,name,sign FROM  classinfo) AS temp ON studentinfo.iClass = temp.id  ";
+            string sql = "select name , oid , 班级 , id  , inDateTime , sign  from studentinfo LEFT  JOIN ( select id as idssss,name as 班级,sign FROM  classinfo) AS temp ON studentinfo.iClass = temp.idssss  ";
             if (textBox1.Text != "")
             {
                 string s = textBox1.Text;
@@ -41,7 +41,7 @@ namespace 个人成绩单生成器
                 //{
                 //    s = Convert.ToInt32(s).ToString();
                 //}
-                sql += " where studentinfo.name like '%" + s + "%' or studentinfo.id like '%" + s + "%' or studentinfo.oid like '%" + s + "%' ";
+                sql += " where studentinfo.name like '%" + s + "%' or studentinfo.id like '%" + s + "%' or studentinfo.oid like '%" + s + "%' or 班级 like '%" + s + "%'  ";
             }
             sql += " limit 100 ";
 
@@ -85,12 +85,12 @@ namespace 个人成绩单生成器
         {
             this.Visible = false;
             int index = dataGridView1.CurrentRow.Index;
-            string id = dataGridView1.Rows[index].Cells[0].Value.ToString();
-            string stname = dataGridView1.Rows[index].Cells[1].Value.ToString();
-            string oid = dataGridView1.Rows[index].Cells[7].Value.ToString();
+            string id = dataGridView1.Rows[index].Cells[3].Value.ToString();
+            string stname = dataGridView1.Rows[index].Cells[0].Value.ToString();
+            string oid = dataGridView1.Rows[index].Cells[1].Value.ToString();
             DateTime dateTime = Convert.ToDateTime(dataGridView1.Rows[index].Cells[4].Value.ToString());
-            string name = dataGridView1.Rows[index].Cells[10].Value.ToString();
-            string sign = dataGridView1.Rows[index].Cells[11].Value.ToString();
+            string name = dataGridView1.Rows[index].Cells[2].Value.ToString();
+            string sign = dataGridView1.Rows[index].Cells[5].Value.ToString();
             StudentForm studentForm = new StudentForm(id, name , sign , oid , stname, dateTime);
             studentForm.ShowDialog();
             this.Visible = true;
@@ -108,6 +108,12 @@ namespace 个人成绩单生成器
         private void StudentSearch_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            flush2();
         }
     }
 }

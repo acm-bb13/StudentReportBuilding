@@ -50,18 +50,19 @@ namespace 个人成绩单生成器
             //init
             if (dataGridView1.Rows.Count > 0) { dataGridView1.Rows.Clear(); }
             if (dataGridView1.Columns.Count > 0) { dataGridView1.Columns.Clear(); }
+
+            string[] temp = { "学号" , "姓名", "班级", "包含学期成绩", "班级编号", "唯一识别码", "入学时间", "是否为修复信息" };
             for (int i = 0; i < mySql.FieldCount; i++)
             {
                 DataGridViewTextBoxColumn acCode = new DataGridViewTextBoxColumn();
                 acCode.Name = mySql.GetName(i);
                 acCode.DataPropertyName = mySql.GetName(i);
                 acCode.HeaderText = mySql.GetName(i);
-                if (i == 2)
-                {
-                    acCode.Name = "班级";
-                    acCode.DataPropertyName = "班级";
-                    acCode.HeaderText = "班级";
-                }
+
+                acCode.Name = temp[i];
+                acCode.DataPropertyName = temp[i];
+                acCode.HeaderText = temp[i];
+
                 dataGridView1.Columns.Add(acCode);
             }
 
@@ -149,6 +150,16 @@ namespace 个人成绩单生成器
         {
             textBox1.Text = "";
             flush2();
+        }
+
+
+        private void TextBox1_Press(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == 13)
+            {
+                flush2();
+            }
         }
     }
 }

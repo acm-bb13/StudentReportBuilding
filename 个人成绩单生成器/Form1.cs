@@ -21,6 +21,7 @@ namespace 个人成绩单生成器
 
         private void button2_Click(object sender, EventArgs e)
         {
+            textBox1.Text = "";
             flush();
         }
 

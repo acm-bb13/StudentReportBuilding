@@ -91,10 +91,10 @@ namespace 个人成绩单生成器
         {
             int index = dataGridView1.CurrentRow.Index;
             string id = dataGridView1.Rows[index].Cells[3].Value.ToString();
-            string stname = dataGridView1.Rows[index].Cells[2].Value.ToString();
+            string stname = dataGridView1.Rows[index].Cells[0].Value.ToString();
             string oid = dataGridView1.Rows[index].Cells[1].Value.ToString();
             DateTime dateTime = Convert.ToDateTime(dataGridView1.Rows[index].Cells[4].Value.ToString());
-            string name = dataGridView1.Rows[index].Cells[0].Value.ToString();
+            string name = dataGridView1.Rows[index].Cells[2].Value.ToString();
             string sign = dataGridView1.Rows[index].Cells[5].Value.ToString();
             studentForm = new StudentForm(id, name, sign, oid, stname, dateTime);
             Close();

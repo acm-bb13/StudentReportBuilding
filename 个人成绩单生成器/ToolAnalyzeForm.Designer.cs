@@ -87,6 +87,7 @@ namespace 个人成绩单生成器
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(344, 21);
             this.textBox1.TabIndex = 12;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox1_Press);
             // 
             // button2
             // 
@@ -112,7 +113,7 @@ namespace 个人成绩单生成器
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(194, 42);
             this.button4.TabIndex = 17;
-            this.button4.Text = "将该名单倒出为Excel";
+            this.button4.Text = "将该名单导出为Excel";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
