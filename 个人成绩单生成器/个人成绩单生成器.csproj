@@ -275,6 +275,7 @@
     <None Include="Resources\a17.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="便签批量生成脚本.txt" />
     <None Include="Resources\a45d4122b693ff555c1ddfc4c49b6e5b.png" />
     <Content Include="Resources\studentmanagesystem.sql" />
     <None Include="Resources\gear8.png" />

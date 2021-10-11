@@ -1,0 +1,10 @@
+﻿Dim MyBk As Bookmark
+For Each MyBk In ActiveDocument.Bookmarks
+MyBk.Delete
+Next
+
+For r = 2 To 21 Step 1
+For c = 1 To 12 Step 1
+Selection.Tables(1).Cell(r, c).Range.Bookmarks.Add ("bk" & r - 1 & "_" & c)
+Next c
+Next r
