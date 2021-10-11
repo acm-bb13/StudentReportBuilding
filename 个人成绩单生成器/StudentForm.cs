@@ -66,48 +66,48 @@ namespace 个人成绩单生成器
 
 
 
-        void flush3()
-        {
-            label6.Text = oid;
-            label7.Text = name;
-            label8.Text = className;
-            if (dataGridView1.Rows.Count > 0) { dataGridView1.Rows.Clear(); }
-            string sql = "select * from testinfo where '" + id + "' = stuId";
-            MySqlDataReader mySql = SQLManage.GetReader(sql);
+        //void flush3()
+        //{
+        //    label6.Text = oid;
+        //    label7.Text = name;
+        //    label8.Text = className;
+        //    if (dataGridView1.Rows.Count > 0) { dataGridView1.Rows.Clear(); }
+        //    string sql = "select * from testinfo where '" + id + "' = stuId";
+        //    MySqlDataReader mySql = SQLManage.GetReader(sql);
 
-            //init
-            if (dataGridView1.Rows.Count > 0) { dataGridView1.Rows.Clear(); }
-            if (dataGridView1.Columns.Count > 0) { dataGridView1.Columns.Clear(); }
-            for (int i = 0; i < mySql.FieldCount; i++)
-            {
-                DataGridViewTextBoxColumn acCode = new DataGridViewTextBoxColumn();
-                acCode.Name = mySql.GetName(i);
-                acCode.DataPropertyName = mySql.GetName(i);
-                acCode.HeaderText = mySql.GetName(i);
-                dataGridView1.Columns.Add(acCode);
-            }
+        //    //init
+        //    if (dataGridView1.Rows.Count > 0) { dataGridView1.Rows.Clear(); }
+        //    if (dataGridView1.Columns.Count > 0) { dataGridView1.Columns.Clear(); }
+        //    for (int i = 0; i < mySql.FieldCount; i++)
+        //    {
+        //        DataGridViewTextBoxColumn acCode = new DataGridViewTextBoxColumn();
+        //        acCode.Name = mySql.GetName(i);
+        //        acCode.DataPropertyName = mySql.GetName(i);
+        //        acCode.HeaderText = mySql.GetName(i);
+        //        dataGridView1.Columns.Add(acCode);
+        //    }
 
-            int record = 0;
-            while (mySql.Read())
-            {
-                record++;
-                int index = dataGridView1.Rows.Add();
-                int p = 0;
-                while (mySql.FieldCount > p)
-                {
-                    dataGridView1.Rows[index].Cells[p].Value = mySql[p++];
-                }
-            }
-            if (record == 0)
-            {
-                int index = dataGridView1.Rows.Add();
-                int p = 0;
-                dataGridView1.Rows[index].Cells[p++].Value = "暂无数据";
-                dataGridView1.Rows[index].Cells[p++].Value = "暂无数据";
-                dataGridView1.Rows[index].Cells[p++].Value = "暂无数据";
-            }
-            SQLManage.closeConn();
-        }
+        //    int record = 0;
+        //    while (mySql.Read())
+        //    {
+        //        record++;
+        //        int index = dataGridView1.Rows.Add();
+        //        int p = 0;
+        //        while (mySql.FieldCount > p)
+        //        {
+        //            dataGridView1.Rows[index].Cells[p].Value = mySql[p++];
+        //        }
+        //    }
+        //    if (record == 0)
+        //    {
+        //        int index = dataGridView1.Rows.Add();
+        //        int p = 0;
+        //        dataGridView1.Rows[index].Cells[p++].Value = "暂无数据";
+        //        dataGridView1.Rows[index].Cells[p++].Value = "暂无数据";
+        //        dataGridView1.Rows[index].Cells[p++].Value = "暂无数据";
+        //    }
+        //    SQLManage.closeConn();
+        //}
 
 
         public void flush4()
@@ -230,23 +230,39 @@ namespace 个人成绩单生成器
             //以模板为基础生成文档  
             Microsoft.Office.Interop.Word._Document oDoc = oWord.Documents.Add(ref oTemplate, ref oMissing, ref oMissing, ref oMissing);
 
-            try{
-                int[] arr = new int[10];
-                for (int i = 0; i < 10; ++i) arr[i] = 1;
-                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-                {
-                    int t = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                    int a = arr[t];
+            string []xqtext = {"第一学期" , "第二学期", "第三学期", "第四学期", "第五学期", "第六学期", "第七学期", "第八学期", "第九学期", "第十学期"};
 
-                    oDoc.Bookmarks.get_Item("bk" + (t * 2 - 1) + "_" + a).Range.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                    oDoc.Bookmarks.get_Item("bk" + (t * 2) + "_" + a).Range.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                    ++arr[t];
+            try
+            {
+                int hx = 1 , hc = 2;
+                for(int xq = 1; xq <= 10; ++xq)
+                {
+                    for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                    {
+                        int t = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        if(t == xq)
+                        {
+                            if(hc > 12)
+                            {
+                                hc = 2;
+                                ++hx;
+                            }
+                            oDoc.Bookmarks.get_Item("bk" + (hx * 2 - 1) + "_" + hc).Range.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                            oDoc.Bookmarks.get_Item("bk" + (hx * 2) + "_" + hc).Range.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                            oDoc.Bookmarks.get_Item("bk" + (hx * 2 - 1) + "_" + 1).Range.Text = xqtext[xq - 1];
+                            ++hc;
+                        }
+                    }
+                    ++hx;
+                    hc = 2;
                 }
+
+
                 oDoc.Bookmarks.get_Item("班级").Range.Text = className;
                 oDoc.Bookmarks.get_Item("姓名").Range.Text = name;
                 oDoc.Bookmarks.get_Item("学号").Range.Text = oid;
-
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
 
             }
@@ -333,6 +349,11 @@ namespace 个人成绩单生成器
                     dataGridView1.Rows[t].Cells[2].Value = dataGridView.Rows[i].Cells[2].Value;
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            flush4();
         }
     }
 }
