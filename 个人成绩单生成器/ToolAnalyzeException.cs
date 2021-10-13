@@ -39,5 +39,12 @@ namespace 个人成绩单生成器
             ToolAnalyzeForm toolAnalyzeForm = new ToolAnalyzeForm(sql);
             toolAnalyzeForm.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string sql = "SELECT a.oid , a.`name` , temp.`name` as name2 ,  a.xq , a.iClass , a.id , a.inDateTime ,temp.sign FROM( SELECT studentinfo.oid ,  studentinfo.`name` , studentinfo.xq , studentinfo.iClass , studentinfo.id , studentinfo.inDateTime FROM studentinfo RIGHT OUTER JOIN (SELECT testinfo.stuId , testinfo.xqTime , count(testinfo.id) FROM testinfo GROUP BY testinfo.stuId , testinfo.xqTime having count(testinfo.stuId)>= 12)  AS temp ON studentinfo.id = temp.stuId ORDER BY studentinfo.`name`)  AS a LEFT JOIN(select id, name, sign FROM  classinfo) AS temp ON a.iClass = temp.id ";
+            ToolAnalyzeForm toolAnalyzeForm = new ToolAnalyzeForm(sql);
+            toolAnalyzeForm.ShowDialog();
+        }
     }
 }

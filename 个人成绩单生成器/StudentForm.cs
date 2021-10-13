@@ -232,24 +232,33 @@ namespace 个人成绩单生成器
 
             string []xqtext = {"第一学期" , "第二学期", "第三学期", "第四学期", "第五学期", "第六学期", "第七学期", "第八学期", "第九学期", "第十学期"};
 
+
             try
             {
                 int hx = 1 , hc = 2;
                 for(int xq = 1; xq <= 10; ++xq)
                 {
+
+                    List<string> map = new List<string>();
                     for (int i = 0; i < dataGridView1.Rows.Count; ++i)
                     {
                         int t = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
                         if(t == xq)
                         {
-                            if(hc > 12)
+                            if (map.FindIndex(a => a.Equals(dataGridView1.Rows[i].Cells[1].Value.ToString() + dataGridView1.Rows[i].Cells[0].Value.ToString() )) != -1)
+                            {
+                                continue;
+                            }
+                            if (hc > 12)
                             {
                                 hc = 2;
                                 ++hx;
                             }
+                            
                             oDoc.Bookmarks.get_Item("bk" + (hx * 2 - 1) + "_" + hc).Range.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
                             oDoc.Bookmarks.get_Item("bk" + (hx * 2) + "_" + hc).Range.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
                             oDoc.Bookmarks.get_Item("bk" + (hx * 2 - 1) + "_" + 1).Range.Text = xqtext[xq - 1];
+                            map.Add(dataGridView1.Rows[i].Cells[1].Value.ToString() + dataGridView1.Rows[i].Cells[0].Value.ToString());
                             ++hc;
                         }
                     }
